@@ -20,5 +20,12 @@ $ node -v
 $ git clone https://github.com/stanleymok/dhiyoga.git
 $ cd dhiyoga
 $ npm init
-$ npm install vue
+$ sudo npm install @vue/cli
+// store path to ./node_modules/.bin in your .bashrc file
+$ vim ~/.bashrc
+// add this line to end of file
+// export PATH=/Users/Stanley/Desktop/dhiyoga/node_modules/.bin:$PATH
+$ vue create dhiyoga
+//select Default Vue 3
 ```
+![image](https://user-images.githubusercontent.com/43771723/115562138-c966c500-a2e8-11eb-9398-4db0fffd1897.png)
