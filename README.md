@@ -8,7 +8,7 @@ Format: `<type>(<scope>): <subject>`
 
 `<scope>` is optional
 
-## Example
+### Example
 
 ```
 feat: add hat wobble
@@ -35,7 +35,7 @@ References:
 - https://seesparkbox.com/foundry/semantic_commit_messages
 - http://karma-runner.github.io/1.0/dev/git-commit-msg.html
 
-#### UBUNTU Setup
+## UBUNTU Setup
 1. [Download WSL 20.04](https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?activetab=pivot:overviewtab)
 2. in WSL, setup environment:
 ```
