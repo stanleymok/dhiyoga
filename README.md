@@ -1,7 +1,6 @@
 # dhiyoga
 World's free yoga repository
 
-
 ### SETUP
 
 #### UBUNTU Setup
@@ -26,9 +25,10 @@ $ vim ~/.bashrc
 // add this line to end of file
 // export PATH=/Users/Stanley/Desktop/dhiyoga/node_modules/.bin:$PATH
 $ vue create dhiyoga
-//select Default Vue 3
+// pick merge
 ```
 ![image](https://user-images.githubusercontent.com/43771723/115562138-c966c500-a2e8-11eb-9398-4db0fffd1897.png)
 ```
+$ cd dhiyoga
 $ npm run server
 ```
