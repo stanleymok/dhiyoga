@@ -1,6 +1,6 @@
 # dhiyoga
 
-# Semantic Commit Messages
+## Semantic Commit Messages
 
 dhiyoga programmers uses the semantic commit messaging style
 
