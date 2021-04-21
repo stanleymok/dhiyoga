@@ -17,4 +17,8 @@ $ sudo apt install nodejs
 // check 
 $ npm -v 
 $ node -v
+$ git clone https://github.com/stanleymok/dhiyoga.git
+$ cd dhiyoga
+$ npm init
+$ npm install vue
 ```
