@@ -17,9 +17,7 @@ $ sudo apt install nodejs
 $ npm -v 
 $ node -v
 $ git clone https://github.com/stanleymok/dhiyoga.git
-$ cd dhiyoga
-$ npm init
-$ sudo npm install @vue/cli
+$ sudo npm install -g @vue/cli
 // store path to ./node_modules/.bin in your .bashrc file
 $ vim ~/.bashrc
 // add this line to end of file
