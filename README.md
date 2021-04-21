@@ -6,7 +6,7 @@ World's free yoga repository
 
 #### UBUNTU Setup
 1. [Download WSL 20.04](https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?activetab=pivot:overviewtab)
-in WSL:
+2. in WSL, setup environment:
 ```
 // populate apt-get's cache
 $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
