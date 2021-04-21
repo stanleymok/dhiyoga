@@ -29,3 +29,6 @@ $ vue create dhiyoga
 //select Default Vue 3
 ```
 ![image](https://user-images.githubusercontent.com/43771723/115562138-c966c500-a2e8-11eb-9398-4db0fffd1897.png)
+```
+$ npm run server
+```
