@@ -43,8 +43,11 @@ References:
 $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 // good to have gcc and g++
 $ sudo apt-get install gcc g++ make
-// install node and npm
-$ sudo apt install nodejs
+```
+3. [Install nvm](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
+```
+// install node and npm via nvm
+$ nvm install --lts
 // check 
 $ npm -v 
 $ node -v
