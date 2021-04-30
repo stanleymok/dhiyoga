@@ -89,4 +89,7 @@ $ . venv/bin/activate
 // pipenv does something similar, but no need to activate
 (venv) $ pip3 install pipenv
 (venv) $ pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
+// fix schema bug in backend
+(venv) $ pipenv uninstall marshmallow
+(venv) $ pip3 install marshmallow~=2.20.1 
 ```
