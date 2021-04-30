@@ -82,14 +82,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 2. in WSL, setup environment:
 ```
 $ cd dhiyoga
-// virtual env helps to mange libraries for each project
-$ python3 -m venv venv
-// activate venv whenever you want to use specific libraries to compile, etc
-$ . venv/bin/activate
-// pipenv does something similar, but no need to activate
-(venv) $ pip3 install pipenv
-(venv) $ pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
+// pipenv manages libraries for your project so you can have multiple versions per project
+$ pip3 install pipenv
+// pipenv installs dependency based on pipflles
+$ pipenv install
+$ pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
 // fix schema bug in backend
-(venv) $ pipenv uninstall marshmallow
-(venv) $ pip3 install marshmallow~=2.20.1 
+$ pipenv uninstall marshmallow
+$ pip3 install marshmallow~=2.20.1 
+$ pipenv shell
+// run
+(dhiyoga) $ python3 app.py
 ```
