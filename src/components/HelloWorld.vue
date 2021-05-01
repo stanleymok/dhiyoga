@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2> {{ subtext }} </h2>
     <form>
       <input type="text">
       <button type="submit">Search</button>
@@ -12,7 +13,8 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
+    subtext: String
   }
 }
 </script>
