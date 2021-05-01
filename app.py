@@ -30,10 +30,6 @@ class ProductSchema(ma.Schema):
 product_schema = ProductSchema(strict=True)
 #products_schema = ProductSchema(strict=True, many=True) #array of products
 
-
-
-
-
 @app.route('/', methods=['GET'])
 def get():
     return jsonify({'dev0': 'Stanley Mok',
@@ -49,4 +45,4 @@ def add_product():
     return product_schema.jsonify(new_product)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8081, debug=True)
