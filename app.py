@@ -7,12 +7,8 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
 
-# init Schema
-product_schema = ProductSchema(strict=True)
-#products_schema = ProductSchema(strict=True, many=True) #array of products
+db = SQLAlchemy(app)
 
 # product class/model
 class Product(db.Model):
@@ -24,9 +20,19 @@ class Product(db.Model):
         self.name = name
         self.price = price
 
+ma = Marshmallow(app)
+
 class ProductSchema(ma.Schema):
     class Meta:
         fields = ('_id', 'name', 'price')
+
+# init Schema
+product_schema = ProductSchema(strict=True)
+#products_schema = ProductSchema(strict=True, many=True) #array of products
+
+
+
+
 
 @app.route('/', methods=['GET'])
 def get():
