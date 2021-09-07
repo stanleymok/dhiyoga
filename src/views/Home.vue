@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/dhiyoga_logo.png">
-    <HelloWorld msg="DHIYOGA" subtext="Who am i?"/>
+    <HelloWorld msg="DHIYOGA"/>
   </div>
 </template>
 
