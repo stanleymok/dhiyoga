@@ -10,3 +10,75 @@ body {
     font-weight: 400;
     font-size: 16px;
 }
+
+// Buttons
+button {
+    padding: 11px 21px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 15px $grey-shadow;
+    font-weight: bold;
+}
+
+.ok-btn {
+    background-color: $green-3;
+    color: $cream-1;
+
+    &:disabled {
+        background-color: $green-1;
+        color: $cream-1;
+        box-shadow: none;
+    }
+
+    &:active, &:focus, &:hover {
+        outline: 0;
+        background-color: $green-4;
+        color: $cream-1;
+        box-shadow: 0px 0px 5px 1px $grey-shadow-active;
+     }
+}
+
+.cancel-btn {
+    background-color: $red-2;
+    color: $cream-1;
+
+    &:disabled {
+        background-color: $red-1;
+        color: $cream-1;
+        box-shadow: none;
+    }
+
+    &:active, &:focus, &:hover {
+        outline: 0;
+        background-color: $red-3;
+        color: $cream-1;
+        box-shadow: 0px 0px 5px 1px $grey-shadow-active;
+     }
+}
+
+// Input
+input[type=text] {
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid $cream-2;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-family: Montserrat;
+
+    &:active, &:focus {
+       outline: 0;
+       border-color: $green-2;
+       box-shadow: 0px 0px 10px 3px $green-glow, inset 0px 0px 5px $green-glow;
+    }
+}
+
+// Links
+a {
+    text-decoration: none;
+    color: $grey-1;
+}
+
+a:hover {
+    color: $grey-2;
+}

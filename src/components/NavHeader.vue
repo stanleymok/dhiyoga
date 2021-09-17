@@ -18,19 +18,13 @@
         padding: 20px 30px;
         font-size: 14px;
         align-items: center;
+        border-bottom: 2px $cream-2 solid;
     }
 
     .nav-item {
         padding: 5px;
         margin-right: 20px;
         font-weight: 600;
-        a {
-            text-decoration: none;
-            color: $grey-1;
-        }
-        a:hover {
-            color: $grey-2;
-        }
     }
 
     .nav-logo {
