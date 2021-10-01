@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/dhiyoga_logo.png">
     <HelloWorld msg="DHIYOGA"/>
   </div>
 </template>
