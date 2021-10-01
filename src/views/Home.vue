@@ -1,17 +1,23 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="DHIYOGA"/>
-  </div>
+	<div class="home">
+		<BasicSection title-text=""/>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+	// @ is an alias to /src
+	import BasicSection from '@/components/BasicSection.vue'
+	export default {
+		name: 'Home',
+		components: {
+			BasicSection
+		},
+		data() {
+			return {
+				passedComponent: {
+					name: "ImageTextSummary"
+				}
+			}
+		}
+	}
 </script>
