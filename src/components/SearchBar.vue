@@ -2,7 +2,7 @@
     <div>
         <form>
             <input type="text" placeholder="Search something">
-            <button class="search-button ok-btn" type="submit"><BIconSearch></BIconSearch></button>
+            <button class="search-button ok-btn" type="submit"><BIconSearch class="icon"></BIconSearch></button>
         </form>
     </div>
 </template>
