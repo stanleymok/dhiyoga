@@ -14,7 +14,6 @@
 <style scoped lang="scss">
     @import '@/assets/stylesheets/variables.scss';
     .image-text-container {
-        padding: 50px 350px;
         display: flex;
     }
 
@@ -24,6 +23,7 @@
         object-fit: scale-down;
         border-radius: 10px;
         background-color: $cream-3;
+        border: 1px solid $cream-3;
     }
 
     .text-container {
