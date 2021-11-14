@@ -6,7 +6,10 @@
         <div class="component-container">
             <component :content-object="contentData" :is="shownComponent" />
         </div>
+        <div>
+        </div>
     </div>
+
 </template>
 
 <style scoped lang="scss">

@@ -1,7 +1,7 @@
 <template>
     <div class="carousel-container">
         <BIconChevronLeft class="icon left-nav end" v-on:click="decreasePage"/>
-        <div class="card-container" :on="page">
+        <div class="card-container" :on="pageCollection">
             <div class="card" v-for="card in pageCollection[page]" :key="card.title">
                 <div class="card-header">{{card.header}}</div>
                 <div class="card-subheader">{{card.subheader}}</div>
@@ -39,6 +39,7 @@
         color: $cream-3;
         cursor: auto;
         stroke: $cream-3;
+        pointer-events: none;
     }
 
     .card-container {
@@ -106,7 +107,7 @@ export default ({
     name: "Carousel",
     props: {
         contentObject: Object,
-    }, 
+    },
     data() {
         return {
             pageCollection: [],
@@ -115,7 +116,8 @@ export default ({
         };
     },
     created() {
-        this.groupObjects();
+        //this.groupObjects();
+        this.togglePageNav();
         window.addEventListener("resize", this.recalculateSetSize);
     },
     mounted() {
@@ -126,24 +128,40 @@ export default ({
     },
     methods: {
         groupObjects() {
+            const cards = this.contentObject.cards;
             let cardSet = [];
-            this.contentObject.cards.forEach((card, index) => {
-                cardSet.push(card);
-                if ((this.setSize == 1) || (index % this.setSize == this.setSize - 1)) {
+
+            for (var i = 0; i < cards.length; i++) {
+                cardSet.push(cards[i]);
+                if (cardSet.length === this.setSize) {
                     this.pageCollection.push(cardSet);
                     cardSet = [];
+                } else if (cards.length - i < this.setSize) {
+                    this.pageCollection.push(cards.slice(i));
+                    break;
                 }
-            });
+            }
+            console.log(this.pageCollection.length);
         },
         decreasePage() {
             if (this.page > 0) {
                 this.page--;
             }
+            this.togglePageNav();
         },
         increasePage() {
-            if (this.page < this.pageCollection) {
-                console.log("oy")
+            if (this.page < this.pageCollection.length) {
                 this.page++;
+            }
+            this.togglePageNav();
+        },
+        togglePageNav() {
+            if (this.page === 0 && this.page === this.pageCollection.length - 1) {
+                $(".left-nav").addClass("end");
+                $(".right-nav").addClass("end");
+            } else if (this.page === 0 || this.page === this.pageCollection.length - 1) {
+                $(".left-nav").toggleClass("end");
+                $(".right-nav").toggleClass("end");
             }
         },
         recalculateSetSize() {
