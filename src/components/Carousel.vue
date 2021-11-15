@@ -116,7 +116,7 @@ export default ({
         };
     },
     created() {
-        //this.groupObjects();
+        this.groupObjects();
         this.togglePageNav();
         window.addEventListener("resize", this.recalculateSetSize);
     },
