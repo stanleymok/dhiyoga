@@ -9,7 +9,7 @@
 
     .empty-container {
         background-color: $cream-1;
-        padding: 35px 350px;
+        padding: 30px 350px;
         text-align: center;
         font-size: 20px;
         font-weight: 500;

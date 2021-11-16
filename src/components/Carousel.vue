@@ -1,16 +1,19 @@
 <template>
     <div class="carousel-container">
         <BIconChevronLeft class="icon left-nav end" v-on:click="decreasePage"/>
-        <div class="card-container" :on="pageCollection">
-            <div class="card" v-for="card in pageCollection[page]" :key="card.title">
-                <div class="card-header">{{card.header}}</div>
-                <div class="card-subheader">{{card.subheader}}</div>
-                <img class="card-image" :src="card.image" />
-                <div class="card-summary">{{card.summary}}</div>
-                <a class="card-link" :src="card.link">Read more</a>
+            <div class="card-container" :on="page" name="slide" tag="p">
+                <div class="card" v-for="card in pageCollection[page]" :key="card.title">
+                    <div class="card-header">{{card.header}}</div>
+                    <div class="card-subheader">{{card.subheader}}</div>
+                    <img class="card-image" :src="card.image" />
+                    <div class="card-summary">{{card.summary}}</div>
+                    <a class="card-link" :src="card.link">Read more</a>
+                </div>
             </div>
-        </div>
-         <BIconChevronRight class="icon right-nav" v-on:click="increasePage"/>
+        <BIconChevronRight class="icon right-nav" v-on:click="increasePage"/>
+    </div>
+    <div class="carousel-pages">
+        <div class="page-dot" v-for="(p, index) in pages" v-on:click="page = index" :key="index" v-bind:class="page === index ? 'active' : ''"></div>
     </div>
 </template>
 
@@ -23,6 +26,7 @@
         align-items: center;
         width: 100%;
         gap: 10px;
+        margin: 10px 0;
     }
 
     .icon {
@@ -48,13 +52,13 @@
     }
 
     .card {
+        display: flex;
+        flex-direction: column;
         flex: 0 0 240px;
+        gap: 10px;
         height: 300px;
         box-shadow: 0px 0px 15px rgba(58, 59, 59, 0.26);
         border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
         padding: 15px 0;
         margin: 0 10px;
 
@@ -98,6 +102,25 @@
             background-color: $cream-2;
         }
     }
+
+    .carousel-pages {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+    }
+
+    .page-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: $cream-3;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &.active {
+            background-color: $grey-1;
+        }
+    }
 </style>
 
 <script>
@@ -111,37 +134,31 @@ export default ({
     data() {
         return {
             pageCollection: [],
+            cards: this.contentObject.cards,
             page: 0,
+            pages: Math.ceil(this.contentObject.cards.length / 3),
             setSize: 3,
         };
     },
     created() {
+        this.calculatePages();
         this.groupObjects();
         this.togglePageNav();
-        window.addEventListener("resize", this.recalculateSetSize);
-    },
-    mounted() {
-        this.recalculateSetSize();
-    },
-    unmounted() {
-        window.removeEventListener("resize", this.recalculateSetSize);
     },
     methods: {
         groupObjects() {
-            const cards = this.contentObject.cards;
             let cardSet = [];
 
-            for (var i = 0; i < cards.length; i++) {
-                cardSet.push(cards[i]);
+            for (var i = 0; i < this.cards.length; i++) {
+                cardSet.push(this.cards[i]);
                 if (cardSet.length === this.setSize) {
                     this.pageCollection.push(cardSet);
                     cardSet = [];
-                } else if (cards.length - i < this.setSize) {
-                    this.pageCollection.push(cards.slice(i));
+                } else if (this.cards.length - i < this.setSize) {
+                    this.pageCollection.push(this.cards.slice(i));
                     break;
                 }
             }
-            console.log(this.pageCollection.length);
         },
         decreasePage() {
             if (this.page > 0) {
@@ -164,23 +181,10 @@ export default ({
                 $(".right-nav").toggleClass("end");
             }
         },
-        recalculateSetSize() {
+        calculatePages() {
             this.pageCollection = [];
-
-            const cardWidth = parseInt($(".card").css("width")) || 240; // Not sure if hardcoding the width is the best choice
-            const margin = parseInt($(".card").css("margin-right")) * 2 || 20;
-            const containerWidth =  parseInt($(".component-container").css("width")) - parseInt($(".icon").css("width")) * 2;
-            let newSetSize = Math.floor(containerWidth / (cardWidth + margin));
-
-            if (newSetSize == this.contentObject.cards.length || newSetSize > 3) {
-                newSetSize = 3;
-            } else if (newSetSize == 0) {
-                newSetSize = 1;
-            }
-
-            this.setSize = newSetSize;
-            this.groupObjects();
-        }
+            this.pages = Math.ceil(this.cards.length / this.setSize);
+        },
     }
 });
 </script>

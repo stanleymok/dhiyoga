@@ -18,8 +18,8 @@
     }
 
     .image-text-image {
-        width: 370px;
-        height: 512px;
+        width: 270px;
+        height: 370px;
         object-fit: scale-down;
         border-radius: 10px;
         background-color: $cream-3;

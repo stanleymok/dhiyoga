@@ -15,7 +15,7 @@
 
     .title-container {
         border-bottom: 2px solid $cream-2;
-        padding: 35px 350px;
+        padding: 30px 350px;
         font-size: 24px;
         font-weight: 600;
         color: $grey-2;
