@@ -54,7 +54,7 @@ $ node -v
 $ git clone https://github.com/stanleymok/dhiyoga.git
 $ cd dhiyoga
 $ npm install
-$ npm run server
+$ npm run serve
 ```
 
 ### Compiles and hot-reloads for development
