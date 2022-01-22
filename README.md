@@ -1,4 +1,4 @@
-# dhiyoga
+#dhiyoga
 
 ## Semantic Commit Messages
 
@@ -94,3 +94,17 @@ $ pipenv shell
 // run
 (dhiyoga) $ python3 app.py
 ```
+
+
+## backend package management
+### install pip-compile
+```
+$ pip install --upgrade pip  # pip-tools needs pip==6.1 or higher (!)
+$ pip install pip-tools
+```
+### creating the requirements and installing it back
+```
+$ pip-compile requirements.in
+$ pip install -r requirements.txt
+```
+
