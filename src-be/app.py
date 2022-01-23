@@ -13,21 +13,22 @@ db = SQLAlchemy(app)
 # product class/model
 class Product(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    price = db.Column(db.Float)
-    
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+    header1 = db.Column(db.String(40))
+    paragraph1 = db.Column(db.String(1000))
+
+    def __init__(self, header1, paragraph1):
+        self.header1 = header1
+        self.paragraph1 = paragraph1
 
 ma = Marshmallow(app)
 
 class ProductSchema(ma.Schema):
     class Meta:
-        fields = ('_id', 'name', 'price')
+        fields = ('_id', 'header1', 'paragraph1')
 
 # init Schema
-product_schema = ProductSchema(strict=True)
+product_schema = ProductSchema()#strict=True)
+#product_schema = ProductSchema(strict=True)
 #products_schema = ProductSchema(strict=True, many=True) #array of products
 
 @app.route('/', methods=['GET'])
@@ -37,9 +38,9 @@ def get():
 
 @app.route('/product', methods=['POST'])
 def add_product():
-    name = request.json['name']
-    price = request.json['price']
-    new_product = Product(name, price)
+    header1 = request.json['header1']
+    paragraph1 = request.json['paragraph1']
+    new_product = Product(header1, paragraph1)
     db.session.add(new_product)
     db.session.commit()
     return product_schema.jsonify(new_product)
