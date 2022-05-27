@@ -1,16 +1,16 @@
 <template>
     <div class="carousel-container">
-        <BIconChevronLeft class="icon left-nav end" v-on:click="decreasePage"/>
-            <div class="card-container" :on="page" name="slide" tag="p">
-                <div class="card" v-for="card in pageCollection[page]" :key="card.title">
-                    <div class="card-header">{{card.header}}</div>
-                    <div class="card-subheader">{{card.subheader}}</div>
-                    <img class="card-image" :src="card.image" />
-                    <div class="card-summary">{{card.summary}}</div>
-                    <a class="card-link" :src="card.link">Read more</a>
-                </div>
+        <BIconChevronLeft class="icon left-nav" :class="{end: prevDisabled}" v-on:click="decreasePage"/>
+        <div class="card-container" :on="page" name="slide" tag="p">
+            <div class="card" v-for="card in pageCollection[page]" :key="card.title">
+                <div class="card-header">{{card.header}}</div>
+                <div class="card-subheader">{{card.subheader}}</div>
+                <img class="card-image" :src="card.image" />
+                <div class="card-summary">{{card.summary}}</div>
+                <a class="card-link" :src="card.link">Read more</a>
             </div>
-        <BIconChevronRight class="icon right-nav" v-on:click="increasePage"/>
+        </div>
+        <BIconChevronRight class="icon right-nav" :class="{end: nextDisabled}" v-on:click="increasePage"/>
     </div>
     <div class="carousel-pages">
         <div class="page-dot" v-for="(p, index) in pages" v-on:click="page = index" :key="index" v-bind:class="page === index ? 'active' : ''"></div>
@@ -124,8 +124,6 @@
 </style>
 
 <script>
-import $ from 'jquery';
-
 export default ({
     name: "Carousel",
     props: {
@@ -138,6 +136,8 @@ export default ({
             page: 0,
             pages: Math.ceil(this.contentObject.cards.length / 3),
             setSize: 3,
+            prevDisabled: true,
+            nextDisabled: this.page < Math.ceil(this.contentObject.cards.length / 3),
         };
     },
     created() {
@@ -167,18 +167,22 @@ export default ({
             this.togglePageNav();
         },
         increasePage() {
-            if (this.page < this.pageCollection.length) {
+            if (this.page < this.pages) {
                 this.page++;
             }
             this.togglePageNav();
         },
         togglePageNav() {
-            if (this.page === 0 && this.page === this.pageCollection.length - 1) {
-                $(".left-nav").addClass("end");
-                $(".right-nav").addClass("end");
-            } else if (this.page === 0 || this.page === this.pageCollection.length - 1) {
-                $(".left-nav").toggleClass("end");
-                $(".right-nav").toggleClass("end");
+            if (this.page > 0) {
+                this.prevDisabled = false;
+            } else {
+                this.prevDisabled = true;
+            }
+
+            if (this.page < this.pages - 1) {
+                this.nextDisabled = false;
+            } else {
+                this.nextDisabled = true;
             }
         },
         calculatePages() {
